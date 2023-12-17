@@ -81,11 +81,11 @@ $ cd devops/exercicios/buildkit/app
 Iremos fazer o build da imagem do Redis para a nossa aplicação.
 ```sh
 $ cd redis
-$ docker build -t <dockerhub-user>/redis-arm:devops --progress=plain .
+$ docker build -t ricardo85x/redis-arm:devops --progress=plain .
 
 $ docker images   
 
-$ docker run -d --name redis -p 6379:6379 <dockerhub-user>/redis-arm:devops
+$ docker run -d --name redis -p 6379:6379 ricardo85x/redis-arm:devops
 $ docker ps
 $ docker logs redis
 ```
@@ -96,11 +96,11 @@ Com isso temos o container do Redis rodando na porta 6379.
 Iremos fazer o build do container do NodeJs, que contém a nossa aplicação.
 ```sh
 $ cd ../node
-$ docker build -t <dockerhub-user>/node-arm:devops --progress=plain .
+$ docker build -t ricardo85x/node-arm:devops --progress=plain .
 ```
 Agora iremos rodar a imagem do node, fazendo a ligação dela com o container do Redis.
 ```sh
-$ docker run -d --name node -p 8080:8080 --link redis <dockerhub-user>/node-arm:devops
+$ docker run -d --name node -p 8080:8080 --link redis ricardo85x/node-arm:devops
 $ docker ps 
 $ docker logs node
 ```
@@ -118,7 +118,7 @@ Inspecionar IMAGEM CONTAINER E VERIFICAR QUE NÃO É DOCKER.
 
 ```sh
 
-$ docker inspect <dockerhub-user>/node-arm:devops
+$ docker inspect ricardo85x/node-arm:devops
 
 # Encontrar o item  "Architecture": 
 # Encontrar o item "DockerVersion": 
